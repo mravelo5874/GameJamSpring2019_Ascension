@@ -23,10 +23,12 @@ public class DynamicJumpMechanic : MonoBehaviour
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            //Debug.Log("Short hop");
         }
-        else if (rb.velocity.y > 0 && im.Jump(controller.PlayerNum))
+        else if (rb.velocity.y > 0 && !im.JumpIsPushed(controller.PlayerNum))
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            //Debug.Log("Full hop");
         }
     }
 }

@@ -10,6 +10,11 @@ public class InputManager : MonoBehaviour
         return Input.GetButtonDown("Jump_" + playerNum.ToString());
     }
 
+    public bool JumpIsPushed(PlayerController.PlayerControllerNum playerNum)
+    {
+        return Input.GetButton("Jump_" + playerNum.ToString());
+    }
+
     public bool Punch(PlayerController.PlayerControllerNum playerNum)
     {
         return Input.GetButtonDown("Punch_" + playerNum.ToString());
