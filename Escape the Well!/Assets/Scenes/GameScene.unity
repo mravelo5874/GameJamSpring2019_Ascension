@@ -241,8 +241,8 @@ Transform:
   m_LocalPosition: {x: -1.9640484, y: 0.7351333, z: 8.605469}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1519295692}
   - {fileID: 868827269}
+  - {fileID: 1519295692}
   - {fileID: 482102788}
   - {fileID: 1664075237}
   m_Father: {fileID: 0}
@@ -258,7 +258,7 @@ PrefabInstance:
     - target: {fileID: 534041645044227727, guid: b19fc544164bb9747b52eb37d721a5ec,
         type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 534041645044227721, guid: b19fc544164bb9747b52eb37d721a5ec,
         type: 3}
@@ -298,7 +298,7 @@ PrefabInstance:
     - target: {fileID: 534041645044227721, guid: b19fc544164bb9747b52eb37d721a5ec,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 534041645044227721, guid: b19fc544164bb9747b52eb37d721a5ec,
         type: 3}
@@ -318,7 +318,7 @@ PrefabInstance:
     - target: {fileID: 534041645044227733, guid: b19fc544164bb9747b52eb37d721a5ec,
         type: 3}
       propertyPath: PlayerNum
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 534041644734782085, guid: b19fc544164bb9747b52eb37d721a5ec,
         type: 3}
@@ -1555,7 +1555,7 @@ PrefabInstance:
     - target: {fileID: 534041645044227727, guid: b19fc544164bb9747b52eb37d721a5ec,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player (1)
       objectReference: {fileID: 0}
     - target: {fileID: 534041645044227721, guid: b19fc544164bb9747b52eb37d721a5ec,
         type: 3}
@@ -1595,7 +1595,7 @@ PrefabInstance:
     - target: {fileID: 534041645044227721, guid: b19fc544164bb9747b52eb37d721a5ec,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 534041645044227721, guid: b19fc544164bb9747b52eb37d721a5ec,
         type: 3}
@@ -1612,6 +1612,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 534041645044227733, guid: b19fc544164bb9747b52eb37d721a5ec,
+        type: 3}
+      propertyPath: PlayerNum
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 534041644734782085, guid: b19fc544164bb9747b52eb37d721a5ec,
         type: 3}
       propertyPath: m_Icon
@@ -1627,7 +1632,7 @@ PrefabInstance:
     - target: {fileID: 5327671444580008331, guid: b19fc544164bb9747b52eb37d721a5ec,
         type: 3}
       propertyPath: playerColor
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 673947997992188440, guid: b19fc544164bb9747b52eb37d721a5ec,
         type: 3}
