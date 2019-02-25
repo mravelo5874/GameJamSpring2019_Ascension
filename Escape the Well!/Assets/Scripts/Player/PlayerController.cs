@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private InputManager im;
+    private CinemachineTargetGroup tg;
     public Animator anim;
+
+    // Options:
+    public bool startFacingLeft;
+    public bool immoblie;
 
     public enum PlayerControllerNum
     {
@@ -57,6 +63,12 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         im = GameObject.Find("InputManager").GetComponent<InputManager>();
+        tg = GameObject.Find("Target Group").GetComponent<CinemachineTargetGroup>();
+
+        if (startFacingLeft)
+        {
+            Flip();
+        }
     }
 
     private void Update()
@@ -85,7 +97,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // if player is not knockedbacked:
-        if (!isKnockedbacked)
+        if (!isKnockedbacked || immoblie)
         {
             // get move input
             moveInput = im.HorizontalMove(PlayerNum);
@@ -142,6 +154,30 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isKnockedDown", true);
             anim.Play("PlayerKnockedDownAnimation");
             rb.AddForce(new Vector2(0f, force));   
+        }
+    }
+
+    public void Deactivate()
+    {
+        for(int i=0; i < tg.m_Targets.Length; i++)
+        {
+            if (tg.m_Targets[i].target.transform == this.transform)
+            {
+                tg.m_Targets[i].weight = 0;
+                this.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void Activate()
+    {
+        for (int i = 0; i < tg.m_Targets.Length; i++)
+        {
+            if (tg.m_Targets[i].target.transform == this.transform)
+            {
+                tg.m_Targets[i].weight = 1;
+                this.gameObject.SetActive(true);
+            }
         }
     }
 

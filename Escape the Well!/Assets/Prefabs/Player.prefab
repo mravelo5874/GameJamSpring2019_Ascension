@@ -284,12 +284,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 6364861818668007152}
+  startFacingLeft: 0
   PlayerNum: 0
   horizontalSpeed_ground: 10
-  horizontalSpeed_air: 10
+  horizontalSpeed_air: 14
   jumpSpeed: 12
   groundCheck: {fileID: 534041643538782908}
-  groundCheckDimentions: {x: 0.9, y: -0.06}
+  groundCheckDimentions: {x: 0.89, y: 0.16}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -329,11 +330,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 6364861818668007152}
   punch_duration: 0.3
-  punchPos: {fileID: 2765940555894279487}
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  punchBoxSize: {x: 0.39, y: 0.54}
   knockbackForce: 1000
 --- !u!1 &3140105191128242897
 GameObject:
