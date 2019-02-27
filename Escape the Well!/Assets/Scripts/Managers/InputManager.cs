@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    public bool BisPushed(PlayerController.PlayerControllerNum playerNum)
+    {
+        return Input.GetButtonDown("B_" + playerNum.ToString());
+    }
 
     public bool Jump(PlayerController.PlayerControllerNum playerNum)
     {
