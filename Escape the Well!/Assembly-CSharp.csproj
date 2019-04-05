@@ -61,11 +61,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\EndGoal.cs" />
+    <Compile Include="Assets\Scripts\Managers\BarManager.cs" />
     <Compile Include="Assets\Scripts\Managers\CharacterSelectManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\Managers\MenuManager.cs" />
     <Compile Include="Assets\Scripts\Managers\NewGameManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\PointsTableManager.cs" />
     <Compile Include="Assets\Scripts\Player\DynamicJumpMechanic.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHurtBox.cs" />

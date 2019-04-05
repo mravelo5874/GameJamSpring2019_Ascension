@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelScene.unity
     guid: 302cfb309caee2f49b825bf9252e7fbb
+  - enabled: 1
+    path: Assets/Scenes/PointsTableScene.unity
+    guid: bf0e9b76914213f43bc9d24ab4958b5d
   m_configObjects: {}

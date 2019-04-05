@@ -2,22 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class StaticVariables : MonoBehaviour
 {
-    public static int playerCount = 2;
+    public static StaticVariables i = null;
 
-    // game points:
-    public static int pointCount = 25;
+    void Awake()
+    {
+        if (!i)
+        {
+            i = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
-    public static int pointSelMin = 15;
-    public static int pointSelMax = 100;
-    public static int delta_point = 5;
-    
+        playerList = new List<player>();
+    }
 
 
-    public static int first_place_pnt = 5;
-    public static int second_place_pnts = 3;
-    public static int third_place_pnts = 2;
-    public static int fourth_place_pnts = 1;
-    public static int null_lvl = -3;
+
+
+    // number of players:
+    public int playerCount = 2;
+
+    // player controllers / colors:
+    [System.Serializable]
+    public class player
+    {
+        public PlayerController.PlayerControllerNum pc;
+        public PlayerVisual.PlayerColor color;
+        public int total_points;
+        public int delta_points;
+    }
+
+    [SerializeField]
+    public List<player> playerList;
+
+
+    // character / options screen:
+    public int pointCount = 25;
+    public int pointSelMin = 15;
+    public int pointSelMax = 100;
+    public int delta_point = 5;
+
+    // points to award
+    public int[] win_points;
+    public int not_complete_points;
 }

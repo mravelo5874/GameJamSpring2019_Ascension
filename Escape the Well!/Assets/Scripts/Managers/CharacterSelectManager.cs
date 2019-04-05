@@ -7,11 +7,17 @@ public class CharacterSelectManager : MonoBehaviour
     public bool isJoined = false;
     public PlayerController.PlayerControllerNum playerNum;
     public int controller_num = 0;
-    public PlayerVisual.PlayerColor color;
     public bool isReady = false;
+    private bool input_allowed = true;
+
+    public PlayerVisual.PlayerColor color;
+    public int color_num = 0;
 
     public GameObject pressAScreen;
     public GameObject JoinedScreen;
+    public GameObject ColorDisplayRotation;
+    public GameObject ReadyUpScreen;
+    public GameObject[] colorDisplays;
 
     private InputManager im;
     private NewGameManager ngm;
@@ -27,6 +33,8 @@ public class CharacterSelectManager : MonoBehaviour
         isJoined = true;
         controller_num = c_num;
         playerNum = num;
+        ChooseStartingColor();
+        StartCoroutine(ScreenDelay());
     }
 
     public void RemovePlayer()
@@ -35,6 +43,7 @@ public class CharacterSelectManager : MonoBehaviour
         if (ngm != null)
         {
             ngm.RemoveControllerFromPlayer(controller_num);
+            ngm.colorTaken[color_num] = false;
         }
         controller_num = 0;
     }
@@ -45,18 +54,120 @@ public class CharacterSelectManager : MonoBehaviour
         {
             pressAScreen.SetActive(true);
             JoinedScreen.SetActive(false);
+            ColorDisplayRotation.SetActive(false);
         }
-        else
+        else if (isJoined && !isReady)
         {
-            pressAScreen.SetActive(false);
-            JoinedScreen.SetActive(true);
+            if (input_allowed)
+            { 
+                pressAScreen.SetActive(false);
+                JoinedScreen.SetActive(true);
+                ColorDisplayRotation.SetActive(true);
 
-            // remove controller from character select
-            if (im.BisPushed(playerNum))
-            {
-                RemovePlayer();
+                // remove controller from character select
+                if (im.BisPushed(playerNum))
+                {
+                    RemovePlayer();
+                    StartCoroutine(ScreenDelay());
+                }
+                // change color
+                if (im.XisPushed(playerNum))
+                {
+                    ngm.colorTaken[color_num] = false;
+                    ChangeColor();
+                }
+                // ready up
+                if (im.AisPushed(playerNum))
+                {
+                    ReadyUp();
+                    StartCoroutine(ScreenDelay());
+                }
             }
-            // change color, ready up, and remove player
         }
+        else if (isJoined && isReady)
+        {
+            JoinedScreen.SetActive(false);
+
+            if (input_allowed)
+            {
+                if (im.BisPushed(playerNum))
+                {
+                    ReadyDown();
+                    StartCoroutine(ScreenDelay());
+                }
+            }  
+        }
+    }
+
+    public IEnumerator ScreenDelay()
+    {
+        input_allowed = false;
+        yield return new WaitForSeconds(0.1f);
+        input_allowed = true;
+    }
+
+    private void ChooseStartingColor()
+    {
+        DisableAllColorDisplays();
+
+        for (int i=0; i<4; i++)
+        {
+            if (!ngm.colorTaken[i])
+            {
+                colorDisplays[i].SetActive(true);
+                ngm.colorTaken[i] = true;
+                this.color = ngm.colors[i];
+                this.color_num = i;
+                return;
+            }
+        }
+    }
+
+    private void DisableAllColorDisplays()
+    {
+        for (int i=0; i<4; i++)
+        {
+            colorDisplays[i].SetActive(false);
+        }
+    }
+
+    private void ChangeColor()
+    {
+        for (int i=0; i<4; i++)
+        {
+            color_num++;
+            if (color_num >= 4)
+            {
+                color_num = 0;
+            }
+
+            if (!ngm.colorTaken[color_num])
+            {
+                ngm.colorTaken[color_num] = true;
+                this.color = ngm.colors[color_num];
+
+                DisableAllColorDisplays();
+                colorDisplays[color_num].SetActive(true);
+
+                return;
+            }
+        }
+    }
+
+    private void ReadyUp()
+    {
+        isReady = true;
+        ReadyUpScreen.SetActive(true);
+
+        this.color = ngm.colors[color_num];
+        ngm.colorTaken[color_num] = true;
+    }
+
+    private void ReadyDown()
+    {
+        isReady = false;
+        ReadyUpScreen.SetActive(false);
+
+        ngm.colorTaken[color_num] = false;
     }
 }

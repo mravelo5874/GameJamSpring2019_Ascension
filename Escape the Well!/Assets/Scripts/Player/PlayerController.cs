@@ -8,11 +8,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private InputManager im;
     private CinemachineTargetGroup tg;
+    private PunchMechanic pm;
     public Animator anim;
+    public StaticVariables.player svp;
 
     // Options:
     public bool startFacingLeft;
     public bool immoblie;
+    public bool isWin = false;
 
     public enum PlayerControllerNum
     {
@@ -30,15 +33,19 @@ public class PlayerController : MonoBehaviour
     [Range(0, 100)]
     public float horizontalSpeed_air;
 
-    private float moveInput;
+    public float moveInput;
     private bool facingRight = true;
 
 
     // Jump Mechanic:
     [Range(0, 50)]
     public float jumpSpeed;
+    public float jumpDelayTime;
+    private float jumpTimer = 0f;
+    private float jumpWait = 0.25f;
 
     private bool isGrounded;
+    private bool isJump = false;
     private bool isJumping = false;
     public Transform groundCheck;
     public Vector2 groundCheckDimentions;
@@ -63,7 +70,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         im = GameObject.Find("InputManager").GetComponent<InputManager>();
-        tg = GameObject.Find("Target Group").GetComponent<CinemachineTargetGroup>();
+        tg = GameObject.Find("TARGET_GROUP").GetComponent<CinemachineTargetGroup>();
+        pm = GetComponent<PunchMechanic>();
 
         if (startFacingLeft)
         {
@@ -77,8 +85,9 @@ public class PlayerController : MonoBehaviour
         isAgainstWall = Physics2D.OverlapBox(wallCheck.position, wallCheckDimentions, 0, whatIsWall);
 
 
-        if (isGrounded && im.Jump(PlayerNum))
+        if (isGrounded && im.AisPushed(PlayerNum))
         {
+            isJump = true;
             isJumping = true;
         }
 
@@ -96,46 +105,84 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // if player is not knockedbacked:
-        if (!isKnockedbacked || immoblie)
+        // if player is not knockedbacked or not immoblie:
+        if (!isKnockedbacked && !immoblie)
         {
             // get move input
             moveInput = im.HorizontalMove(PlayerNum);
 
-            // move player horizontally
-            if (isGrounded)
+            // if player is not attacking
+            if (!pm.isAttacking)
             {
-                rb.velocity = new Vector2(moveInput * horizontalSpeed_ground, rb.velocity.y);
-            }
-            else
-            {
-                rb.velocity = new Vector2(moveInput * horizontalSpeed_air, rb.velocity.y);
-            }
-
-            
-            if (!facingRight && moveInput > 0 || facingRight == true && moveInput < 0)
-            {
-                // wall jump mechanic:
-                if (isAgainstWall && !isGrounded && im.JumpIsPushed(PlayerNum))
+                if (moveInput == 0f)
                 {
-                    rb.velocity = (new Vector2(rb.velocity.x, 0f));
-                    rb.AddForce(new Vector2(0f, wallJumpForce));
+                    anim.SetBool("isRunning", false);
+                }
+                else
+                {
+                    anim.SetBool("isRunning", true);
+                }
+
+                // move player horizontally
+                if (isGrounded)
+                {
+                    rb.velocity = new Vector2(moveInput * horizontalSpeed_ground, rb.velocity.y);
+                }
+                else
+                {
+                    rb.velocity = new Vector2(moveInput * horizontalSpeed_air, rb.velocity.y);
                 }
 
 
-                Flip();
-            }
+                if (!facingRight && moveInput > 0 || facingRight == true && moveInput < 0)
+                {
+                    // wall jump mechanic:
+                    if (isAgainstWall && !isGrounded && im.AIsHeldDown(PlayerNum))
+                    {
+                        rb.velocity = (new Vector2(rb.velocity.x, 0f));
+                        rb.AddForce(new Vector2(0f, wallJumpForce));
+                    }
+
+
+                    Flip();
+                }
 
 
 
-            // jump player
-            if (isJumping)
-            {
-                //rb.AddForce(new Vector2(0f, jumpForce));
-                rb.velocity = Vector2.up * jumpSpeed;
-                isJumping = false;
+                // jump player
+                if (isJump)
+                {
+                    // play jump animation:
+                    if (!anim.GetBool("isJumping"))
+                    {
+                        anim.SetBool("isJumping", true);
+                    }
+                    StartCoroutine(JumpWithDelay());
+
+                    isJump = false;
+                }
+                if (isJumping)
+                {
+                    jumpTimer += Time.deltaTime;
+                    if (jumpTimer >= jumpWait)
+                    {
+                        if (isGrounded)
+                        {
+                            isJumping = false;
+                            anim.SetBool("isJumping", false);
+                            jumpTimer = 0f;
+                        }
+                    }
+                }
             }
         }
+    }
+
+    IEnumerator JumpWithDelay()
+    {
+        yield return new WaitForSeconds(jumpDelayTime);
+        //rb.AddForce(new Vector2(0f, jumpForce));
+        rb.velocity = Vector2.up * jumpSpeed;
     }
 
     public void Flip()
@@ -152,7 +199,7 @@ public class PlayerController : MonoBehaviour
         {
             isKnockedbacked = true;
             anim.SetBool("isKnockedDown", true);
-            anim.Play("PlayerKnockedDownAnimation");
+            anim.Play("Blue_PlayerKnockedDownAnim");
             rb.AddForce(new Vector2(0f, force));   
         }
     }
@@ -188,6 +235,5 @@ public class PlayerController : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(wallCheck.position, wallCheckDimentions);
-
     }
 }

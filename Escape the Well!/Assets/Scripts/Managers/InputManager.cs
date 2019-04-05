@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    public bool YisPushed(PlayerController.PlayerControllerNum playerNum)
+    {
+        return Input.GetButtonDown("Y_" + playerNum.ToString());
+    }
+
     public bool BisPushed(PlayerController.PlayerControllerNum playerNum)
     {
         return Input.GetButtonDown("B_" + playerNum.ToString());
     }
 
-    public bool Jump(PlayerController.PlayerControllerNum playerNum)
+    public bool AisPushed(PlayerController.PlayerControllerNum playerNum)
     {
-        return Input.GetButtonDown("Jump_" + playerNum.ToString());
+        return Input.GetButtonDown("A_" + playerNum.ToString());
     }
 
-    public bool JumpIsPushed(PlayerController.PlayerControllerNum playerNum)
+    public bool AIsHeldDown(PlayerController.PlayerControllerNum playerNum)
     {
-        return Input.GetButton("Jump_" + playerNum.ToString());
+        return Input.GetButton("A_" + playerNum.ToString());
     }
 
-    public bool Punch(PlayerController.PlayerControllerNum playerNum)
+    public bool XisPushed(PlayerController.PlayerControllerNum playerNum)
     {
-        return Input.GetButtonDown("Punch_" + playerNum.ToString());
+        return Input.GetButtonDown("X_" + playerNum.ToString());
     }
 
     public float HorizontalMove(PlayerController.PlayerControllerNum playerNum)

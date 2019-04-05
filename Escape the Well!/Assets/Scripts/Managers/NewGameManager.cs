@@ -14,8 +14,16 @@ public class NewGameManager : MonoBehaviour
     public GameObject[] characterSelectBoxes;
     public CharacterSelectManager[] characterSelectManagers;
 
+    public PlayerVisual.PlayerColor[] colors;
+    public bool[] colorTaken;
+
     public PlayerController.PlayerControllerNum[] playerControllers;
     public bool[] controllerNumTaken;
+
+    public GameObject GameCountDownObject;
+    public TextMeshProUGUI gameCountDownText;
+    public int CountDownTime;
+    private float countDownTimer;
 
     private void Awake()
     {
@@ -36,7 +44,7 @@ public class NewGameManager : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            if (im.JumpIsPushed(playerControllers[i]) && !controllerNumTaken[i])
+            if (im.AisPushed(playerControllers[i]) && !controllerNumTaken[i])
             {
                 for (int j = 0; i < 4; j++)
                 {
@@ -49,6 +57,63 @@ public class NewGameManager : MonoBehaviour
                 }
             }
         }
+
+        // check if all players are ready
+        var ready_count = 0;
+        for (int i=0; i<4; i++)
+        {
+            if (characterSelectManagers[i].isReady)
+            {
+                ready_count++;
+            }
+        }
+        if (ready_count == StaticVariables.i.playerCount)
+        {
+            if (!GameCountDownObject.activeInHierarchy)
+            {
+                GameCountDownObject.SetActive(true);
+                countDownTimer = CountDownTime;
+                gameCountDownText.text = CountDownTime.ToString();
+            }
+
+            countDownTimer -= Time.deltaTime;
+            gameCountDownText.text = Mathf.RoundToInt(countDownTimer).ToString(); 
+
+            if (countDownTimer <= 0f)
+            {
+                StartGame();
+            }
+        }
+        else
+        {
+            if (GameCountDownObject.activeInHierarchy)
+            {
+                GameCountDownObject.SetActive(false);
+            }
+        }
+    }
+
+    private void StartGame()
+    {
+        // clear all players
+        if (StaticVariables.i.playerList.Count > 0)
+        {
+            StaticVariables.i.playerList.Clear();
+        }
+
+        // add players
+        for (int i=0; i<StaticVariables.i.playerCount; i++)
+        {
+            var player = new StaticVariables.player();
+            player.pc = characterSelectManagers[i].playerNum;
+            player.color = characterSelectManagers[i].color;
+            player.total_points = 0;
+            player.delta_points = 0;
+            StaticVariables.i.playerList.Add(player);
+        }
+
+        // load game:
+        SceneManager.LoadScene("LevelScene");
     }
 
     public void RemoveControllerFromPlayer(int num)
@@ -61,12 +126,12 @@ public class NewGameManager : MonoBehaviour
 
     private void UpdateCharacterSelect()
     {
-        for (int i = 0; i < StaticVariables.playerCount; i++)
+        for (int i = 0; i < StaticVariables.i.playerCount; i++)
         {
             characterSelectBoxes[i].SetActive(true);
         }
 
-        for (int i = 4; i > StaticVariables.playerCount; i--)
+        for (int i = 4; i > StaticVariables.i.playerCount; i--)
         {
             characterSelectBoxes[i - 1].SetActive(false);
         }
@@ -74,16 +139,16 @@ public class NewGameManager : MonoBehaviour
 
     private void UpdateTexts()
     {
-        PlayerCountText.text = StaticVariables.playerCount.ToString();
-        PointCountText.text = StaticVariables.pointCount.ToString();
+        PlayerCountText.text = StaticVariables.i.playerCount.ToString();
+        PointCountText.text = StaticVariables.i.pointCount.ToString();
     }
 
     public void DecPlayerCount()
     {
-        StaticVariables.playerCount--;
-        if (StaticVariables.playerCount < 2)
+        StaticVariables.i.playerCount--;
+        if (StaticVariables.i.playerCount < 2)
         {
-            StaticVariables.playerCount = 2;
+            StaticVariables.i.playerCount = 2;
         }
 
         UpdateTexts();
@@ -92,10 +157,10 @@ public class NewGameManager : MonoBehaviour
 
     public void IncPlayerCount()
     {
-        StaticVariables.playerCount++;
-        if(StaticVariables.playerCount > 4)
+        StaticVariables.i.playerCount++;
+        if(StaticVariables.i.playerCount > 4)
         {
-            StaticVariables.playerCount = 4;
+            StaticVariables.i.playerCount = 4;
         }
 
         UpdateTexts();
@@ -104,10 +169,10 @@ public class NewGameManager : MonoBehaviour
 
     public void DecPointCount()
     {
-        StaticVariables.pointCount -= StaticVariables.delta_point;
-        if (StaticVariables.pointCount < StaticVariables.pointSelMin)
+        StaticVariables.i.pointCount -= StaticVariables.i.delta_point;
+        if (StaticVariables.i.pointCount < StaticVariables.i.pointSelMin)
         {
-            StaticVariables.pointCount = StaticVariables.pointSelMin;
+            StaticVariables.i.pointCount = StaticVariables.i.pointSelMin;
         }
 
         UpdateTexts();
@@ -115,10 +180,10 @@ public class NewGameManager : MonoBehaviour
 
     public void IncPointCount()
     {
-        StaticVariables.pointCount += StaticVariables.delta_point;
-        if (StaticVariables.pointCount > StaticVariables.pointSelMax)
+        StaticVariables.i.pointCount += StaticVariables.i.delta_point;
+        if (StaticVariables.i.pointCount > StaticVariables.i.pointSelMax)
         {
-            StaticVariables.pointCount = StaticVariables.pointSelMax;
+            StaticVariables.i.pointCount = StaticVariables.i.pointSelMax;
         }
 
         UpdateTexts();

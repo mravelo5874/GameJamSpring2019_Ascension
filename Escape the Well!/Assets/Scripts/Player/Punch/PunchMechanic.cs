@@ -8,9 +8,18 @@ public class PunchMechanic : MonoBehaviour
     private InputManager im;
     public Animator anim;
 
-    private bool isPunching = false;
-    public float punch_duration;
-    private float punch_timer;
+    public bool isAttacking = false;
+
+    public float upAttackDuration;
+    private bool isAttackUp = false;
+
+    public float punchAttackDuration;
+    private bool isAttackpunch = false;
+
+    public float downAttackDuration;
+    private bool isAttackDown = false;
+
+    private float attack_timer = 0f;
 
     [Range(0, 2000)]
     public float knockbackForce;
@@ -23,22 +32,64 @@ public class PunchMechanic : MonoBehaviour
 
     private void Update()
     {
-        if (!isPunching)
+        if (!isAttacking)
         {
             // able to punch
-            if (im.Punch(controller.PlayerNum))
+
+            // if player is not moving
+            if (controller.moveInput == 0f)
             {
-                isPunching = true;
-                anim.Play("PlayerPunchAnimation");
-            }     
+                if (im.XisPushed(controller.PlayerNum))
+                {
+                    anim.Play("Blue_PlayerPunchAnim");
+                    isAttacking = true;
+                    isAttackpunch = true;
+                }
+                else if (im.YisPushed(controller.PlayerNum))
+                {
+                    anim.Play("Blue_PlayerUpAttackAnim");
+                    isAttacking = true;
+                    isAttackUp = true;
+                }
+                else if (im.BisPushed(controller.PlayerNum))
+                {
+                    anim.Play("Blue_PlayerDownAttackAnim");
+                    isAttacking = true;
+                    isAttackDown = true;
+                }
+            }    
         }
         else
         {
-            punch_timer += Time.deltaTime;
-            if (punch_timer >= punch_duration)
+            if (isAttackUp)
             {
-                isPunching = false;
-                punch_timer = 0f;
+                attack_timer += Time.deltaTime;
+                if (attack_timer >= upAttackDuration)
+                {
+                    isAttacking = false;
+                    isAttackUp = false;
+                    attack_timer = 0f;
+                }
+            }
+            else if (isAttackpunch)
+            {
+                attack_timer += Time.deltaTime;
+                if (attack_timer >= punchAttackDuration)
+                {
+                    isAttacking = false;
+                    isAttackpunch = false;
+                    attack_timer = 0f;
+                }
+            }
+            else if (isAttackDown)
+            {
+                attack_timer += Time.deltaTime;
+                if (attack_timer >= downAttackDuration)
+                {
+                    isAttacking = false;
+                    isAttackDown = false;
+                    attack_timer = 0f;
+                }
             }
         }
     }

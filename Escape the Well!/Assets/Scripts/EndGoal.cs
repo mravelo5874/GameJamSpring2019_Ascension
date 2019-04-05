@@ -16,8 +16,9 @@ public class EndGoal : MonoBehaviour
             Color color = player.GetComponentInParent<PlayerVisual>().color;
             string playerNum = pc.PlayerNum.ToString();
 
+            pc.isWin = true;
             pc.Deactivate();
-            gm.PlayerComplete(color, playerNum);
+            gm.PlayerComplete(color, playerNum, pc);
         }
     }
 }
