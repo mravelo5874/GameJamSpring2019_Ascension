@@ -36,8 +36,8 @@ public class PunchMechanic : MonoBehaviour
         {
             // able to punch
 
-            // if player is not moving
-            if (controller.moveInput == 0f)
+            // if player is not moving and is on the ground
+            if (controller.moveInput == 0f && controller.isGrounded) // Grounded Attacks
             {
                 if (im.XisPushed(controller.PlayerNum))
                 {
@@ -57,7 +57,28 @@ public class PunchMechanic : MonoBehaviour
                     isAttacking = true;
                     isAttackDown = true;
                 }
-            }    
+            }
+            else if (!controller.isGrounded) // Airial Attacks
+            {
+                if (im.XisPushed(controller.PlayerNum))
+                {
+                    anim.Play("Blue_PlayerAirialHorizontal");
+                    isAttacking = true;
+                    isAttackpunch = true;
+                }
+                else if (im.YisPushed(controller.PlayerNum))
+                {
+                    anim.Play("Blue_PlayerAirialUp");
+                    isAttacking = true;
+                    isAttackUp = true;
+                }
+                else if (im.BisPushed(controller.PlayerNum))
+                {
+                    anim.Play("Blue_PlayerAirialDown");
+                    isAttacking = true;
+                    isAttackDown = true;
+                }
+            }
         }
         else
         {

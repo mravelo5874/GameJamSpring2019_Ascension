@@ -22,7 +22,8 @@ public class StaticVariables : MonoBehaviour
         playerList = new List<player>();
     }
 
-
+    // Round number:
+    public int round_num = 0;
 
 
     // number of players:

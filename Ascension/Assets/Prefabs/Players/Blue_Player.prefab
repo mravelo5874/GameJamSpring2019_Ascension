@@ -144,25 +144,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 379097378250198850}
+  svp:
+    pc: 0
+    color: 0
+    total_points: 0
+    delta_points: 0
   startFacingLeft: 1
   immoblie: 0
+  isWin: 0
   PlayerNum: 0
   horizontalSpeed_ground: 10
   horizontalSpeed_air: 14
   moveInput: 0
-  jumpSpeed: 12
+  jumpSpeed: 15
   jumpDelayTime: 0
+  isGrounded: 0
   groundCheck: {fileID: 3540370710095978994}
-  groundCheckDimentions: {x: 0.89, y: 0.04}
+  groundCheckDimentions: {x: 0.93, y: 0.13}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
   wallJumpForce: 400
   wallCheck: {fileID: 527598318223622265}
-  wallCheckDimentions: {x: -0.09, y: 1.29}
+  wallCheckDimentions: {x: 0.36, y: 1.23}
   whatIsWall:
     serializedVersion: 2
     m_Bits: 512
+  wall_jump_delay: 0.35
   kb_duration: 1.5
 --- !u!114 &7170549343744331207
 MonoBehaviour:
@@ -314,7 +322,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.061286747, y: -0.014190853}
+  m_Offset: {x: 0.040918574, y: -0.037959576}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -325,7 +333,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5691, y: 1.4046396}
+  m_Size: {x: 0.47877887, y: 1.3571022}
   m_EdgeRadius: 0
 --- !u!1 &5808637973754829472
 GameObject:
@@ -428,7 +436,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5808637973754829472}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

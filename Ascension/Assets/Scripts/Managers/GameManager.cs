@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     //public Animator startCountdown;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI RoundsText;
     public GameObject scoresLayoutGroup;
     public GameObject nodePrefab;
 
@@ -39,6 +40,9 @@ public class GameManager : MonoBehaviour
         AnimationClip clip = CountDownAnim.runtimeAnimatorController.animationClips[0];
         StartCoroutine(StartGameDelay(clip.length));
 
+        // display round number:
+        StaticVariables.i.round_num = StaticVariables.i.round_num + 1;
+        RoundsText.text = "ROUND " + StaticVariables.i.round_num;
 
         gameTimer = gameStartTime;
         targetGroup = GameObject.Find("TARGET_GROUP").GetComponent<CinemachineTargetGroup>();
@@ -46,11 +50,17 @@ public class GameManager : MonoBehaviour
 
         if (debug_mode)
         {
-            StaticVariables.i.playerCount = 1;
+            gameTimer = 999f;
+            StaticVariables.i.playerCount = 2;
             var player = new StaticVariables.player();
             player.pc = PlayerController.PlayerControllerNum.P1;
             player.color = PlayerVisual.PlayerColor.Blue;
             StaticVariables.i.playerList.Add(player);
+
+            var dummy = new StaticVariables.player();
+            dummy.pc = PlayerController.PlayerControllerNum.P2;
+            dummy.color = PlayerVisual.PlayerColor.Red;
+            StaticVariables.i.playerList.Add(dummy);
         }
 
         // activate players
@@ -114,8 +124,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-
-
         if (gameStart)
         {
             gameTimer -= Time.deltaTime;
@@ -175,6 +183,4 @@ public class GameManager : MonoBehaviour
         _pc.svp.delta_points = StaticVariables.i.win_points[players_complete];
         players_complete++;
     }
-
-
 }

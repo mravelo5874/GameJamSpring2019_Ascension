@@ -96,9 +96,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'press (X) to change color
+  m_text: '(X) CHANGE SKIN
 
-    press (A) to ready up'
+    (A) READY'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 1090519039
   m_fontColor: {r: 1, g: 1, b: 1, a: 0.2509804}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -126,8 +126,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_fontStyle: 0
   m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
-  m_characterSpacing: 0
+  m_characterSpacing: 16
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -167,15 +167,15 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 1.6807251, w: 0}
   m_textInfo:
     textComponent: {fileID: 1902182444}
-    characterCount: 47
+    characterCount: 25
     spriteCount: 0
-    spaceCount: 9
-    wordCount: 10
+    spaceCount: 4
+    wordCount: 5
     linkCount: 0
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -573,7 +573,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: press (A) to join!
+  m_text: PRESS (A)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -601,8 +601,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -610,7 +610,7 @@ MonoBehaviour:
   m_fontStyle: 0
   m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
-  m_characterSpacing: 0
+  m_characterSpacing: 16
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -639,15 +639,15 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 1.6807251, w: 0}
+  m_margin: {x: -56.93123, y: 0, z: -59.31694, w: 0}
   m_textInfo:
     textComponent: {fileID: 9180074715700679274}
-    characterCount: 18
+    characterCount: 9
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 4
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -921,7 +921,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -38.75}
+  m_AnchoredPosition: {x: 150, y: -187.5}
   m_SizeDelta: {x: 200, y: -70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8695773255053348735

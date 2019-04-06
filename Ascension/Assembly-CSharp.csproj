@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Managers\CharacterSelectManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\LoadingGameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\MenuManager.cs" />
     <Compile Include="Assets\Scripts\Managers\NewGameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PointsTableManager.cs" />

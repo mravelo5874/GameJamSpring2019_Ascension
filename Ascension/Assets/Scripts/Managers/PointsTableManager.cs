@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PointsTableManager : MonoBehaviour
 {
     public GameObject node_prefab;
     public GameObject VBox_object;
+    public TextMeshProUGUI rounds_text;
 
     public float switch_scene_delay;
     public bool playerWin;
 
     private void Awake()
     { 
+        // show round number
+        rounds_text.text = "ROUND " + StaticVariables.i.round_num;
+
         // set up bars
         for (int i=0; i<StaticVariables.i.playerCount; i++)
         {

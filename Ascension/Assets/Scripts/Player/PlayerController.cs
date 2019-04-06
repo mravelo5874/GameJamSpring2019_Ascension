@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     private float jumpTimer = 0f;
     private float jumpWait = 0.25f;
 
-    private bool isGrounded;
+    public bool isGrounded;
     private bool isJump = false;
     private bool isJumping = false;
     public Transform groundCheck;
@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
     public Transform wallCheck;
     public Vector2 wallCheckDimentions;
     public LayerMask whatIsWall;
+    public float wall_jump_delay;
+    private bool canWallJump = true;
 
     // Knockback Mechanic:
     private bool isKnockedbacked = false;
@@ -137,10 +139,12 @@ public class PlayerController : MonoBehaviour
                 if (!facingRight && moveInput > 0 || facingRight == true && moveInput < 0)
                 {
                     // wall jump mechanic:
-                    if (isAgainstWall && !isGrounded && im.AIsHeldDown(PlayerNum))
+                    if (isAgainstWall && !isGrounded && im.AIsHeldDown(PlayerNum) && canWallJump)
                     {
                         rb.velocity = (new Vector2(rb.velocity.x, 0f));
                         rb.AddForce(new Vector2(0f, wallJumpForce));
+                        canWallJump = false;
+                        StartCoroutine(WallJumpDelay());
                     }
 
 
@@ -178,7 +182,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator JumpWithDelay()
+    private IEnumerator WallJumpDelay()
+    {
+        yield return new WaitForSeconds(wall_jump_delay);
+        // time until player can wall jump again
+        canWallJump = true;
+    }
+
+    private IEnumerator JumpWithDelay()
     {
         yield return new WaitForSeconds(jumpDelayTime);
         //rb.AddForce(new Vector2(0f, jumpForce));

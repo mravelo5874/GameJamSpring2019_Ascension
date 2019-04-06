@@ -78,7 +78,7 @@ public class BarManager : MonoBehaviour
             end_point_lerp = 0;
         }
 
-        text.text = " [" + player_name.ToString() + "] " + start_point_lerp.ToString() + "/" + StaticVariables.i.pointCount.ToString();
+        text.text = " [" + player_name.ToString() + "]  " + start_point_lerp.ToString() + "/" + StaticVariables.i.pointCount.ToString();
     }
 
     public void LerpPointBarOverTime(float delay_time, float lerp_time)
@@ -127,7 +127,7 @@ public class BarManager : MonoBehaviour
             }
 
             int num = Mathf.RoundToInt(Mathf.Lerp(start_point_lerp, end_point_lerp, lerp_timer / total_lerp_time));
-            text.text = " [" + player_name.ToString() + "] " + num + "/" + StaticVariables.i.pointCount.ToString();
+            text.text = " [" + player_name.ToString() + "]  " + num + "/" + StaticVariables.i.pointCount.ToString();
         }
     }
 }

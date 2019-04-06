@@ -20,13 +20,12 @@ public class NewGameManager : MonoBehaviour
     public PlayerController.PlayerControllerNum[] playerControllers;
     public bool[] controllerNumTaken;
 
-    public GameObject GameCountDownObject;
-    public TextMeshProUGUI gameCountDownText;
-    public int CountDownTime;
-    private float countDownTimer;
+    public Animator Fader;
+    public bool lockedIn = false;
 
     private void Awake()
     {
+        Fader.Play("FadeFromBlack");
         ResetScene();
         UpdateTexts();
         UpdateCharacterSelect();
@@ -69,32 +68,23 @@ public class NewGameManager : MonoBehaviour
         }
         if (ready_count == StaticVariables.i.playerCount)
         {
-            if (!GameCountDownObject.activeInHierarchy)
-            {
-                GameCountDownObject.SetActive(true);
-                countDownTimer = CountDownTime;
-                gameCountDownText.text = CountDownTime.ToString();
-            }
-
-            countDownTimer -= Time.deltaTime;
-            gameCountDownText.text = Mathf.RoundToInt(countDownTimer).ToString(); 
-
-            if (countDownTimer <= 0f)
-            {
-                StartGame();
-            }
+            lockedIn = true;
+            Fader.Play("FadeToBlack");
+            StartCoroutine(LoadGame());
         }
-        else
-        {
-            if (GameCountDownObject.activeInHierarchy)
-            {
-                GameCountDownObject.SetActive(false);
-            }
-        }
+    }
+
+    private IEnumerator LoadGame()
+    {
+        yield return new WaitForSeconds(2f);
+        StartGame();
     }
 
     private void StartGame()
     {
+        // start on round zero:
+        StaticVariables.i.round_num = 0;
+
         // clear all players
         if (StaticVariables.i.playerList.Count > 0)
         {
@@ -113,7 +103,7 @@ public class NewGameManager : MonoBehaviour
         }
 
         // load game:
-        SceneManager.LoadScene("LevelScene");
+        SceneManager.LoadScene("LoadingGameScene");
     }
 
     public void RemoveControllerFromPlayer(int num)
@@ -192,10 +182,5 @@ public class NewGameManager : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("MenuScene");
-    }
-
-    public void GoToCharacterSelectScene()
-    {
-        SceneManager.LoadScene("CharacterSelectScene");
     }
 }

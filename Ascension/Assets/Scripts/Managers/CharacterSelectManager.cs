@@ -60,7 +60,7 @@ public class CharacterSelectManager : MonoBehaviour
         else if (isJoined && !isReady)
         {
             if (input_allowed)
-            { 
+            {
                 pressAScreen.SetActive(false);
                 JoinedScreen.SetActive(true);
                 ColorDisplayRotation.SetActive(true);
@@ -91,13 +91,14 @@ public class CharacterSelectManager : MonoBehaviour
 
             if (input_allowed)
             {
-                if (im.BisPushed(playerNum))
+                if (im.BisPushed(playerNum) && !ngm.lockedIn)
                 {
                     ReadyDown();
                     StartCoroutine(ScreenDelay());
                 }
-            }  
+            }
         }
+
     }
 
     public IEnumerator ScreenDelay()
