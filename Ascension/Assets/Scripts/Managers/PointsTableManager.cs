@@ -32,7 +32,6 @@ public class PointsTableManager : MonoBehaviour
             if (StaticVariables.i.playerList[i].delta_points > 0)
             {
                 bm.SetPointBarScale((float)StaticVariables.i.playerList[i].total_points / StaticVariables.i.pointCount);
-                Debug.Log((float)StaticVariables.i.playerList[i].total_points / StaticVariables.i.pointCount);
                 bm.SetDeltaBarScale((float)(StaticVariables.i.playerList[i].total_points + StaticVariables.i.playerList[i].delta_points) / StaticVariables.i.pointCount);
                 bm.LerpPointBarOverTime(1f, 1f);
             }

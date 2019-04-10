@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private InputManager im;
     private CinemachineTargetGroup tg;
     private PunchMechanic pm;
+    private PlayerAnimationBox pab;
     public Animator anim;
     public StaticVariables.player svp;
 
@@ -67,13 +68,18 @@ public class PlayerController : MonoBehaviour
     private bool isKnockedbacked = false;
     public float kb_duration;
     private float kb_timer;
+    public PhysicsMaterial2D knocked_down_material;
+    public PhysicsMaterial2D normal_material;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.sharedMaterial = normal_material;
         im = GameObject.Find("InputManager").GetComponent<InputManager>();
         tg = GameObject.Find("TARGET_GROUP").GetComponent<CinemachineTargetGroup>();
         pm = GetComponent<PunchMechanic>();
+        pab = GetComponent<PlayerAnimationBox>();
 
         if (startFacingLeft)
         {
@@ -98,6 +104,7 @@ public class PlayerController : MonoBehaviour
             kb_timer += Time.deltaTime;
             if (kb_timer >= kb_duration)
             {
+                rb.sharedMaterial = normal_material;
                 anim.SetBool("isKnockedDown", false);
                 isKnockedbacked = false;
                 kb_timer = 0f;
@@ -135,12 +142,24 @@ public class PlayerController : MonoBehaviour
                     rb.velocity = new Vector2(moveInput * horizontalSpeed_air, rb.velocity.y);
                 }
 
+                // wall sliding animation
+                if (!isGrounded && isAgainstWall)
+                {
+                    anim.Play(pab.wall_slide);
+                    anim.SetBool("isWallSliding", true);
+                }
+                else
+                {
+                    anim.SetBool("isWallSliding", false);
+                }
+
 
                 if (!facingRight && moveInput > 0 || facingRight == true && moveInput < 0)
                 {
                     // wall jump mechanic:
                     if (isAgainstWall && !isGrounded && im.AIsHeldDown(PlayerNum) && canWallJump)
                     {
+                        anim.SetBool("isWallSliding", false);
                         rb.velocity = (new Vector2(rb.velocity.x, 0f));
                         rb.AddForce(new Vector2(0f, wallJumpForce));
                         canWallJump = false;
@@ -174,6 +193,7 @@ public class PlayerController : MonoBehaviour
                         {
                             isJumping = false;
                             anim.SetBool("isJumping", false);
+                            anim.Play(pab.land);
                             jumpTimer = 0f;
                         }
                     }
@@ -210,7 +230,8 @@ public class PlayerController : MonoBehaviour
         {
             isKnockedbacked = true;
             anim.SetBool("isKnockedDown", true);
-            anim.Play("Blue_PlayerKnockedDownAnim");
+            anim.Play(pab.knocked_out);
+            rb.sharedMaterial = knocked_down_material;
             rb.AddForce(new Vector2(0f, force));   
         }
     }

@@ -6,6 +6,7 @@ public class PunchMechanic : MonoBehaviour
 {
     private PlayerController controller;
     private InputManager im;
+    private PlayerAnimationBox pab;
     public Animator anim;
 
     public bool isAttacking = false;
@@ -26,6 +27,7 @@ public class PunchMechanic : MonoBehaviour
 
     private void Awake()
     {
+        pab = GetComponent<PlayerAnimationBox>();
         im = GameObject.Find("InputManager").GetComponent<InputManager>();
         controller = GetComponent<PlayerController>();
     }
@@ -41,19 +43,19 @@ public class PunchMechanic : MonoBehaviour
             {
                 if (im.XisPushed(controller.PlayerNum))
                 {
-                    anim.Play("Blue_PlayerPunchAnim");
+                    anim.Play(pab.horizontal_attack);
                     isAttacking = true;
                     isAttackpunch = true;
                 }
                 else if (im.YisPushed(controller.PlayerNum))
                 {
-                    anim.Play("Blue_PlayerUpAttackAnim");
+                    anim.Play(pab.up_attack);
                     isAttacking = true;
                     isAttackUp = true;
                 }
                 else if (im.BisPushed(controller.PlayerNum))
                 {
-                    anim.Play("Blue_PlayerDownAttackAnim");
+                    anim.Play(pab.down_attack);
                     isAttacking = true;
                     isAttackDown = true;
                 }
@@ -62,19 +64,19 @@ public class PunchMechanic : MonoBehaviour
             {
                 if (im.XisPushed(controller.PlayerNum))
                 {
-                    anim.Play("Blue_PlayerAirialHorizontal");
+                    anim.Play(pab.aerial_horizontal_attack);
                     isAttacking = true;
                     isAttackpunch = true;
                 }
                 else if (im.YisPushed(controller.PlayerNum))
                 {
-                    anim.Play("Blue_PlayerAirialUp");
+                    anim.Play(pab.aerial_up_attack);
                     isAttacking = true;
                     isAttackUp = true;
                 }
                 else if (im.BisPushed(controller.PlayerNum))
                 {
-                    anim.Play("Blue_PlayerAirialDown");
+                    anim.Play(pab.aerial_down_attack);
                     isAttacking = true;
                     isAttackDown = true;
                 }

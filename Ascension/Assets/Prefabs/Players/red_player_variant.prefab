@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &215749163030025471
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2831215649340582282, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_Name
+      value: red_player_variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 101557330110207255, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 101557330110207255, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 101557330110207255, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 101557330110207255, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 101557330110207255, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 101557330110207255, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 101557330110207255, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 101557330110207255, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 101557330110207255, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 101557330110207255, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 101557330110207255, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984692570951862432, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: playerColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984692570951862432, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984692570951862432, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984692570951862432, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 379097378250198850, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d50ba82f967d8014ebb9e2585c6d000b, type: 2}
+    - target: {fileID: 7501114491735807651, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f77ecfc965e065458332ade3653f1c5,
+        type: 3}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: air_born
+      value: red_air_born
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: aerial_down_attack
+      value: red_aerial_down
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: aerial_horizontal_attack
+      value: red_aerial_horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: aerial_up_attack
+      value: red_up_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: down_attack
+      value: red_down_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: falling
+      value: red_falling
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: idle
+      value: red_idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: jump
+      value: red_jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: knocked_out
+      value: red_knocked_out
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: land
+      value: red_land
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: lay
+      value: red_lay
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: horizontal_attack
+      value: red_horizontal_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: run
+      value: red_run
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: up_attack
+      value: red_up_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: wall_slide
+      value: red_wall_slide
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7583ed1df0528a24c9f6e871ba8a81d7, type: 3}
