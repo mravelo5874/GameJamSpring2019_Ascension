@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 2831215649340582282, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
         type: 3}
       propertyPath: m_Name
-      value: original_player
+      value: green_player_variant
       objectReference: {fileID: 0}
     - target: {fileID: 101557330110207255, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
         type: 3}
@@ -67,5 +67,96 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1984692570951862432, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: playerColor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: air_born
+      value: green_air_born
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: aerial_down_attack
+      value: green_aerial_down
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: aerial_horizontal_attack
+      value: green_aerial_horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: aerial_up_attack
+      value: green_up_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: down_attack
+      value: green_down_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: falling
+      value: green_falling
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: idle
+      value: green_idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: jump
+      value: green_jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: knocked_out
+      value: green_knocked_out
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: land
+      value: green_land
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: lay
+      value: green_lay
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: horizontal_attack
+      value: green_horizontal_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: run
+      value: green_run
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: up_attack
+      value: green_up_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: wall_slide
+      value: green_wall_slide
+      objectReference: {fileID: 0}
+    - target: {fileID: 379097378250198850, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 64d23429eca3f654aa1a3cb71c40b06c, type: 2}
+    - target: {fileID: 7501114491735807651, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d4f45a44862889b4397caf57f8ba6ba6,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7583ed1df0528a24c9f6e871ba8a81d7, type: 3}

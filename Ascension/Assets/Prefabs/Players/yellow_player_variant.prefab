@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 2831215649340582282, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
         type: 3}
       propertyPath: m_Name
-      value: original_player
+      value: yellow_player_variant
       objectReference: {fileID: 0}
     - target: {fileID: 101557330110207255, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
         type: 3}
@@ -67,5 +67,96 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1984692570951862432, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: playerColor
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: air_born
+      value: yellow_air_born
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: aerial_down_attack
+      value: yellow_aerial_down
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: aerial_horizontal_attack
+      value: yellow_aerial_horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: aerial_up_attack
+      value: yellow_up_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: down_attack
+      value: yellow_down_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: falling
+      value: yellow_falling
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: idle
+      value: yellow_idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: jump
+      value: yellow_jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: knocked_out
+      value: yellow_knocked_out
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: land
+      value: yellow_land
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: lay
+      value: yellow_lay
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: horizontal_attack
+      value: yellow_horizontal_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: run
+      value: yellow_run
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: up_attack
+      value: yellow_up_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353352162158518993, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: wall_slide
+      value: yellow_wall_slide
+      objectReference: {fileID: 0}
+    - target: {fileID: 379097378250198850, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fb1d38675806e0f4984e04ad2a1a2bb2, type: 2}
+    - target: {fileID: 7501114491735807651, guid: 7583ed1df0528a24c9f6e871ba8a81d7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 87222349a690d4247b3ec21018e8a4db,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7583ed1df0528a24c9f6e871ba8a81d7, type: 3}
