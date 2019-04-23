@@ -44,8 +44,8 @@ public class StaticVariables : MonoBehaviour
 
 
     // character / options screen:
-    public int pointCount = 25;
-    public int pointSelMin = 15;
+    public int pointCount = 15;
+    public int pointSelMin = 5;
     public int pointSelMax = 100;
     public int delta_point = 5;
 

@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 1984692570951862432}
   - component: {fileID: 1353352162158518993}
   m_Layer: 10
-  m_Name: Blue_Player
+  m_Name: original_player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 512
-  wall_jump_delay: 0.35
+  wall_jump_delay: 0.2
   kb_duration: 1.5
   knocked_down_material: {fileID: 6200000, guid: 595df0e4a0a68f14e804b5dddc001976,
     type: 2}

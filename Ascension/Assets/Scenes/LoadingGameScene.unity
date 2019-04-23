@@ -603,7 +603,7 @@ MonoBehaviour:
   bar_object: {fileID: 1047820627}
   loading_text: {fileID: 952661377}
   time_to_load: 4
-  scene_to_load: LevelScene
+  scene_to_load: RandomSceneLoader
 --- !u!1 &1464015725
 GameObject:
   m_ObjectHideFlags: 0

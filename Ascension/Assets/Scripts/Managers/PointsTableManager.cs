@@ -55,11 +55,14 @@ public class PointsTableManager : MonoBehaviour
         // check to see if any player won
         for (int i = 0; i < StaticVariables.i.playerCount; i++)
         {
-
+            if (StaticVariables.i.playerList[i].total_points >= StaticVariables.i.pointCount)
+            {
+                playerWin = true;
+            }
         }
         if (playerWin)
         {
-
+            StartCoroutine(EndGameScene());
         }
         else
         {
@@ -67,10 +70,16 @@ public class PointsTableManager : MonoBehaviour
         }
     }
 
+    private IEnumerator EndGameScene()
+    {
+        yield return new WaitForSeconds(switch_scene_delay);
+        SceneManager.LoadScene("GameResultsScene");
+    }
+
     private IEnumerator SwitchScenes()
     {
         yield return new WaitForSeconds(switch_scene_delay);
-        SceneManager.LoadScene("LevelScene");
+        SceneManager.LoadScene("RandomSceneLoader");
     }
 
     private void SetColor(BarManager bm, int num)

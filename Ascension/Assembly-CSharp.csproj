@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Managers\BarManager.cs" />
     <Compile Include="Assets\Scripts\Managers\CharacterSelectManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameResultsManager.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\Managers\LoadingGameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\MenuManager.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\Scripts\Managers\PlayerPointNode.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerPointsManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PointsTableManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\RSL_Manager.cs" />
     <Compile Include="Assets\Scripts\Player\DynamicJumpMechanic.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationBox.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
