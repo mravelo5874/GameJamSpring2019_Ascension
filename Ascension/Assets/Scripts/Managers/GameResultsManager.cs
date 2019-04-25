@@ -34,7 +34,7 @@ public class GameResultsManager : MonoBehaviour
     private void Awake()
     {
         Fader.Play("FadeFromBlack");
-
+        StaticVariables.i.sfxManager.play_win_scene();
 
         // make a copy of the list of players
         List<StaticVariables.player> players = new List<StaticVariables.player>();

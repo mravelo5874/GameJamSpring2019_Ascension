@@ -110,7 +110,12 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator StartGameDelay(float _time)
     {
+        StaticVariables.i.sfxManager.play_ready_horn();
+
         yield return new WaitForSeconds(_time);
+
+        StaticVariables.i.sfxManager.play_go_horn();
+
 
         // start update loop
         gameStart = true;
@@ -164,6 +169,7 @@ public class GameManager : MonoBehaviour
             PlayerController pc = playerControllerList[i];
             if (!pc.isWin)
             {
+                StaticVariables.i.sfxManager.play_elimination();
                 pc.Deactivate();
                 pc.svp.delta_points = StaticVariables.i.not_complete_points;
             }

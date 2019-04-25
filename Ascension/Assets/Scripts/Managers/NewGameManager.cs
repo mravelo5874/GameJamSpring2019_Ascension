@@ -143,6 +143,7 @@ public class NewGameManager : MonoBehaviour
 
         UpdateTexts();
         UpdateCharacterSelect();
+        StaticVariables.i.sfxManager.play_select();
     }
 
     public void IncPlayerCount()
@@ -155,6 +156,7 @@ public class NewGameManager : MonoBehaviour
 
         UpdateTexts();
         UpdateCharacterSelect();
+        StaticVariables.i.sfxManager.play_select();
     }
 
     public void DecPointCount()
@@ -166,6 +168,7 @@ public class NewGameManager : MonoBehaviour
         }
 
         UpdateTexts();
+        StaticVariables.i.sfxManager.play_select();
     }
 
     public void IncPointCount()
@@ -177,10 +180,12 @@ public class NewGameManager : MonoBehaviour
         }
 
         UpdateTexts();
+        StaticVariables.i.sfxManager.play_select();
     }
 
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("MenuScene");
+        StaticVariables.i.sfxManager.play_cancel();
     }
 }

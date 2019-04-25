@@ -14,7 +14,8 @@ public class PointsTableManager : MonoBehaviour
     public bool playerWin;
 
     private void Awake()
-    { 
+    {
+
         // show round number
         rounds_text.text = "ROUND " + StaticVariables.i.round_num;
 

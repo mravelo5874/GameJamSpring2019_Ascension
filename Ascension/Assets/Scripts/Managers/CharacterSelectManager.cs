@@ -31,6 +31,8 @@ public class CharacterSelectManager : MonoBehaviour
 
     public void AddPlayer(PlayerController.PlayerControllerNum num, int c_num)
     {
+        StaticVariables.i.sfxManager.play_cool_select();
+
         isJoined = true;
         controller_num = c_num;
         playerNum = num;
@@ -40,6 +42,8 @@ public class CharacterSelectManager : MonoBehaviour
 
     public void RemovePlayer()
     {
+        StaticVariables.i.sfxManager.play_cancel();
+
         isJoined = false;
         if (ngm != null)
         {
@@ -135,6 +139,8 @@ public class CharacterSelectManager : MonoBehaviour
 
     private void ChangeColor()
     {
+        StaticVariables.i.sfxManager.play_select();
+
         for (int i=0; i<4; i++)
         {
             color_num++;
@@ -158,6 +164,8 @@ public class CharacterSelectManager : MonoBehaviour
 
     private void ReadyUp()
     {
+        StaticVariables.i.sfxManager.play_ready_horn();
+
         isReady = true;
         BG.color = new Color(PlayerVisual.ReturnRGB(color).r, PlayerVisual.ReturnRGB(color).g, PlayerVisual.ReturnRGB(color).b, (float)100 / 255);
 
@@ -167,6 +175,8 @@ public class CharacterSelectManager : MonoBehaviour
 
     private void ReadyDown()
     {
+        StaticVariables.i.sfxManager.play_cancel();
+
         isReady = false;
         BG.color = new Color(Color.white.r, Color.white.g, Color.white.b, (float)50 / 255);
         ngm.colorTaken[color_num] = false;

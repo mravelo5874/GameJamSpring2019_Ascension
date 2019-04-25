@@ -16,6 +16,7 @@ public class EndGoal : MonoBehaviour
             Color color = player.GetComponentInParent<PlayerVisual>().color;
             string playerNum = pc.PlayerNum.ToString();
 
+            StaticVariables.i.sfxManager.play_reach_goal();
             pc.isWin = true;
             pc.Deactivate();
             gm.PlayerComplete(color, playerNum, pc);

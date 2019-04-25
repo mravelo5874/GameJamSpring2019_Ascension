@@ -52,4 +52,8 @@ public class StaticVariables : MonoBehaviour
     // points to award
     public int[] win_points;
     public int not_complete_points;
+
+    // Audio:
+    public MusicManager musicManager;
+    public SFX_Manager sfxManager;
 }

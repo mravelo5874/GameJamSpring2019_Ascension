@@ -3597,6 +3597,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fade
       objectReference: {fileID: 0}
+    - target: {fileID: 7537893792574244686, guid: d6b1429517f334642a809975e57d3aba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7537893792574244687, guid: d6b1429517f334642a809975e57d3aba,
         type: 3}
       propertyPath: m_LocalPosition.x

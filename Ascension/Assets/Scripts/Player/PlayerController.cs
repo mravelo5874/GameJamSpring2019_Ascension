@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private PlayerAnimationBox pab;
     public Animator anim;
     public StaticVariables.player svp;
+    public PlayerAudioManager pam;
 
     // Options:
     public bool startFacingLeft;
@@ -126,10 +127,13 @@ public class PlayerController : MonoBehaviour
                 if (moveInput == 0f)
                 {
                     anim.SetBool("isRunning", false);
+                    pam.pause_run();
                 }
                 else
                 {
                     anim.SetBool("isRunning", true);
+                    if (isGrounded)
+                        pam.play_run();
                 }
 
                 // move player horizontally
@@ -164,6 +168,8 @@ public class PlayerController : MonoBehaviour
                         rb.AddForce(new Vector2(0f, wallJumpForce));
                         canWallJump = false;
                         StartCoroutine(WallJumpDelay());
+                        pam.pause_run();
+                        pam.play_walljump();
                     }
 
 
@@ -194,6 +200,7 @@ public class PlayerController : MonoBehaviour
                             isJumping = false;
                             anim.SetBool("isJumping", false);
                             anim.Play(pab.land);
+                            pam.play_land();
                             jumpTimer = 0f;
                         }
                     }
@@ -214,6 +221,8 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(jumpDelayTime);
         //rb.AddForce(new Vector2(0f, jumpForce));
         rb.velocity = Vector2.up * jumpSpeed;
+        pam.pause_run();
+        pam.play_jump();
     }
 
     public void Flip()
@@ -232,7 +241,8 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isKnockedDown", true);
             anim.Play(pab.knocked_out);
             rb.sharedMaterial = knocked_down_material;
-            rb.AddForce(new Vector2(0f, force));   
+            rb.AddForce(new Vector2(0f, force));
+            pam.play_hit();
         }
     }
 

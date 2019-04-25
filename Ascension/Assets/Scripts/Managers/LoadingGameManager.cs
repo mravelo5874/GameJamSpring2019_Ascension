@@ -13,11 +13,15 @@ public class LoadingGameManager : MonoBehaviour
     private float text_timer;
     public string scene_to_load;
 
+    private MusicManager mm;
 
     private void Awake()
     {
         timer = 0f;
         text_timer = 0f;
+
+        mm = GameObject.Find("[STATIC_VARIABLES]").GetComponent<MusicManager>();
+        mm.pauseMusic();
     }
 
     private void Update()
@@ -59,6 +63,7 @@ public class LoadingGameManager : MonoBehaviour
     {
         // load scene after small delay
         yield return new WaitForSeconds(0.5f);
+        mm.playAdrenaline(false);
         SceneManager.LoadScene(scene_to_load);
     }
 }
